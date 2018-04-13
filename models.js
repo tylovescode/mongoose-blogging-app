@@ -25,3 +25,7 @@ blogpostSchema.methods.serialize = function() {
 		author: this.authorString
 	};
 }
+
+const Blogpost = mongoose.model('Blogpost', blogpostSchema);
+
+module.exports = {Blogpost};
