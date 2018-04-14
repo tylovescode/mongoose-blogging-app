@@ -6,10 +6,10 @@ const mongoose = require('mongoose');
 const blogpostSchema = mongoose.Schema({
 	title: {type: String, required: true},
 	content: {type: String, required: true},
-	author: {
-		{firstName: String, required: true},
-		{lastName: String, required: true}
-	},
+	author: [{
+		firstName: String,
+		lastName: String,
+	}],
 	created: Date
 });
 
