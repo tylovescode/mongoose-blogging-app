@@ -20,19 +20,15 @@ app.use(bodyParser.json());
 
 //GET requests
 app.get('/blogposts', (req, res) => {
-	console.log(Blogpost.find());
+	console.log('First';
 	Blogpost
 		.find()
 		.then(posts => {
-			console.log('hello');
+			console.log('Second');
 			res.json({
-				posts: posts.map(post => {
-					post.serialize();
-					console.log('post')
-				})
-
+				posts: posts.map(
+					(posts) => posts.serialize())
 			});
-		
 		})
 		.catch(err => {
 			console.error(err);
