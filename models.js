@@ -10,7 +10,7 @@ const blogpostSchema = mongoose.Schema({
 		firstName: String,
 		lastName: String,
 	}],
-	created: Date
+	// createdAt: new Date()
 });
 
 // Virtuals
@@ -26,6 +26,7 @@ blogpostSchema.methods.serialize = function() {
 	};
 }
 
+//Creates new Mongoose model (Blogpost) that uses blogpostSchema as defined above
 const Blogpost = mongoose.model('Blogpost', blogpostSchema);
 
 module.exports = {Blogpost};

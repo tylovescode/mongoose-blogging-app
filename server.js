@@ -7,10 +7,37 @@ const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
 const { PORT, DATABASE_URL } = require('./config');
-const { Blogposts } = require('./models');
+const { Blogpost } = require('./models');
 
 const app = express();
 app.use(bodyParser.json());
+
+//Mongoose Model: Blogpost
+//Database Name: mongo-blog-app
+//Collection Name: posts
+
+
+//GET requests
+app.get('/blogposts', (req, res) => {
+	console.log(Blogpost.find());
+	Blogpost
+		.find()
+		.then(posts => {
+			console.log('hello');
+			res.json({
+				posts: posts.map(post => {
+					post.serialize();
+					console.log('post')
+				})
+
+			});
+		
+		})
+		.catch(err => {
+			console.error(err);
+			res.status(500).json({ message: 'Internal Server Error' });
+		});
+});
 
 // Running and closing the server
 let server;
