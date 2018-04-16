@@ -14,13 +14,13 @@ app.use(bodyParser.json());
 
 
 //Mongoose Model: Blogpost
-//Database Name: mongo-blog-app
+//Local Database Name: mongo-blog-app
 //Collection Name: posts
 
 
 //GET requests
 app.get('/blogposts', (req, res) => {
-	console.log('First';
+	console.log('first');
 	Blogpost
 		.find()
 		.then(posts => {
