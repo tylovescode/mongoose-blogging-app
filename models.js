@@ -6,11 +6,11 @@ const mongoose = require('mongoose');
 const blogpostSchema = mongoose.Schema({
 	title: {type: String, required: true},
 	content: {type: String, required: true},
-	author: {
-		{firstName: String, required: true},
-		{lastName: String, required: true}
-	},
-	created: Date
+	author: [{
+		firstName: String,
+		lastName: String,
+	}],
+	// createdAt: new Date()
 });
 
 // Virtuals
@@ -26,6 +26,7 @@ blogpostSchema.methods.serialize = function() {
 	};
 }
 
+//Creates new Mongoose model (Blogpost) that uses blogpostSchema as defined above
 const Blogpost = mongoose.model('Blogpost', blogpostSchema);
 
 module.exports = {Blogpost};
