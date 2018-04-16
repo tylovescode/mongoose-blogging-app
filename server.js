@@ -12,35 +12,7 @@ const { Blogpost } = require('./models');
 const app = express();
 app.use(bodyParser.json());
 
-<<<<<<< HEAD
-//GET requests to /blogposts
-app.get('/blogposts', (req, res) => {
-	Blogposts
-	.find()
-	.then(blogposts => {
-		res.json({
-			blogposts: blogposts.map(
-				(blogpost) => blogpost.serialize())
-		});
-	})
-	.catch(err => {
-		console.error(err);
-		res.status(500).json({ message: 'Internal Server Error' });
-	});
-});
 
-
-
-
-
-
-
-
-
-
-
-
-=======
 //Mongoose Model: Blogpost
 //Database Name: mongo-blog-app
 //Collection Name: posts
@@ -68,7 +40,7 @@ app.get('/blogposts', (req, res) => {
 		});
 });
 
->>>>>>> 3cfd08e9a36eb7ebf7a24d6f6c1120214c35f1e5
+
 // Running and closing the server
 let server;
 
