@@ -12,6 +12,33 @@ const { Blogposts } = require('./models');
 const app = express();
 app.use(bodyParser.json());
 
+//GET requests to /blogposts
+app.get('/blogposts', (req, res) => {
+	Blogposts
+	.find()
+	.then(blogposts => {
+		res.json({
+			blogposts: blogposts.map(
+				(blogpost) => blogpost.serialize())
+		});
+	})
+	.catch(err => {
+		console.error(err);
+		res.status(500).json({ message: 'Internal Server Error' });
+	});
+});
+
+
+
+
+
+
+
+
+
+
+
+
 // Running and closing the server
 let server;
 
