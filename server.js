@@ -22,9 +22,9 @@ app.use(bodyParser.json());
 app.get('/blogposts', (req, res) => {
 	Blogpost
 		.find()
-		.then(posts => {
+		.then(blogposts => {
 			res.json({
-				posts: posts.map(
+				blogposts: blogposts.map(
 					(posts) => posts.serialize())
 			});
 		})
