@@ -6,11 +6,11 @@ const mongoose = require('mongoose');
 const blogpostSchema = mongoose.Schema({
 	title: {type: String, required: true},
 	content: {type: String, required: true},
-	author: [{
+	author: {
 		firstName: String,
 		lastName: String,
-	}],
-	// createdAt: new Date()
+	},
+	created: Date
 });
 
 // Virtuals
@@ -23,8 +23,8 @@ blogpostSchema.methods.serialize = function() {
 	return {
 		id: this._id,
 		title: this.title,
-		content: this.content,
-		author: this.authorString
+		author: this.authorString,
+		content: this.content
 	};
 }
 
