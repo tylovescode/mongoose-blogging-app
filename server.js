@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 
 //Mongoose Model: Blogpost
 //Local Database Name: mongo-blog-app
-//Collection Name: posts
+//Collection Name: blogposts
 
 
 //GET requests
