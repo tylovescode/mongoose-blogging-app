@@ -101,6 +101,12 @@ app.delete('/blogposts/:id', (req, res) => {
 		.catch(err => res.status(500).json({ message: 'Internal Server Error'}));
 });
 
+//NON-EXISTENT ENDPOINTS
+app.use('*', function (req, res) {
+	res.status(404).json({ message: '404 - File Not Found'});
+});
+
+
 // Running and closing the server
 let server;
 
