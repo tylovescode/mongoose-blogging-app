@@ -93,7 +93,13 @@ app.put('/blogposts/:id', (req, res) => {
 		.catch(err => res.status(500).json({ message: 'Internal Server Error'}));
 });
 
-
+//DELETE request
+app.delete('/blogposts/:id', (req, res) => {
+	Blogpost
+		.findByIdAndRemove(req.params.id)
+		.then(post => res.status(204).end())
+		.catch(err => res.status(500).json({ message: 'Internal Server Error'}));
+});
 
 // Running and closing the server
 let server;
