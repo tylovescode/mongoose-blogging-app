@@ -34,6 +34,42 @@ app.get('/blogposts', (req, res) => {
 		});
 });
 
+//GET requests by ID
+app.get('/blogposts/:id', (req, res) => {
+	Blogpost
+		.findById(req.params.id)
+		.then(post => res.json(post.serialize()))
+		.catch(err => {
+			console.error(err);
+			res.status(500).json({message: 'Internal Server Error'});
+		});
+});
+
+//POST requests
+app.post('/blogposts', (req, res) => {
+	const requiredFields = ['title', 'content', 'author'];
+	for (let i = 0; i < requiredFields.length; i++) {
+		const field = requiredFields[i];
+		if (!(field in req.body)) {
+			const message = `Missing \`${field}\` in request body`;
+			console.error(message);
+			return res.status(400).send(message);
+		}
+	}
+
+	Blogpost
+		.create({
+			title: req.body.title,
+			content: req.body.content,
+			author: req.body.author
+		})
+		.then(post => res.status(201).json(post.serialize()))
+		.catch(err => {
+			console.error(err);
+			res.status(500).json({message: 'Internal Server Error'});
+		});
+});
+
 
 // Running and closing the server
 let server;
